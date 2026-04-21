@@ -1,36 +1,40 @@
-# 🧠 DSA Streak
+# C++ DSA
 
-Welcome to my learning streak for mastering Data Structures and Algorithms. Each day I solve at least one problem, commit the solution, and document key insights.
+Learning C++ and Data Structures from scratch.
+Following a structured course — covering basics, DSA implementations, and STL.
 
-## 📅 Streak Tracker
-- ✅ Day 1: Arrays
+## Topics
 
-## 📚 Topics Covered Till Now
-- Arrays
+### C++ Basics
+- [ ] Variables, Loops, Functions
+- [ ] Arrays, Pointers
+- [ ] OOP
 
-## 🧰 Tools & Language
+### DSA Implementations
+- [x] Arrays
+- [ ] Linked List
+- [ ] Stack
+- [ ] Queue
+- [ ] Trees
+- [ ] Graphs
+
+### STL
+- [ ] Vectors
+- [ ] Maps, Sets
+- [ ] Algorithms
+
+## Structure
+
+```
+cpp-dsa/
+├── CPP-Basics/
+├── DSA/
+│   ├── Arrays/
+│   ├── LinkedList/
+│   └── ...
+└── STL/
+```
+
+## Language & Tools
 - Language: C++
 - IDE: VS Code
-- Platforms: LeetCode, Codeforces, GeeksforGeeks
-
-## 🧑‍🏫 Teaching Angle
-Each folder includes:
-- ✅ Clean code with comments
-- 📄 Notes for learners
-- 📊 Diagrams for visual understanding
-
-## 🔄 Weekly Ritual
-Every Sunday:
-- Push a `Week_X_Summary.md` file
-- Reflect on learnings, patterns, and mistakes
-- Add diagrams or cheat sheets for tricky topics
-
-## 📌 How to Use This Repo
-Browse by topic folders. Each problem includes:
-- Problem statement (in comments)
-- Code solution
-- Notes or diagrams (if needed)
-
----
-
-Happy coding and keep the streak alive! 💪
