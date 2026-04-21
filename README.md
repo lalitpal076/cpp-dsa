@@ -6,10 +6,12 @@ Following a structured course — covering basics, DSA implementations, and STL.
 ## Topics
 
 ### C++ Basics
-- [ ] Variables, Loops, Functions
-- [ ] Arrays, Pointers
-- [ ] OOP
-
+- [ ] Default Arguments
+- [ ] Reference variable & Call by Reference
+- [ ] Function Overloading
+- [ ] Structure in c++
+### OOP
+- [ ] Class & Objects static members
 ### DSA Implementations
 - [x] Arrays
 - [ ] Linked List
@@ -28,6 +30,7 @@ Following a structured course — covering basics, DSA implementations, and STL.
 ```
 cpp-dsa/
 ├── CPP-Basics/
+├── OOP/
 ├── DSA/
 │   ├── Arrays/
 │   ├── LinkedList/
