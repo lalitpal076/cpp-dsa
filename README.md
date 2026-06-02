@@ -21,6 +21,7 @@ Following a structured course — covering basics, DSA implementations, and STL.
 - [ ] Graphs
 
 ### STL
+- [x] STL TemplateAssignment
 - [ ] Vectors
 - [ ] Maps, Sets
 - [ ] Algorithms
