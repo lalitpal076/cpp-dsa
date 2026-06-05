@@ -6,12 +6,15 @@ Following a structured course — covering basics, DSA implementations, and STL.
 ## Topics
 
 ### C++ Basics
-- [ ] Default Arguments
-- [ ] Reference variable & Call by Reference
-- [ ] Function Overloading
-- [ ] Structure in c++
+- [x] Default Arguments
+- [x] Reference variable & Call by Reference
+- [x] Function Overloading
 ### OOP
-- [ ] Class & Objects static members
+- [x] Class & Objects static members
+- [x] Constructor
+- [x] Copy Constructor
+- [x] Operator Overloading
+
 ### DSA Implementations
 - [x] Arrays
 - [ ] Linked List
