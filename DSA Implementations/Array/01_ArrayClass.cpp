@@ -1,3 +1,4 @@
+
 #include<iostream>
 using namespace std;
 #define ARRAY_OVERFLOW 1
@@ -10,6 +11,7 @@ class Array{
         int *arrPtr;
     public:
         Array(int);
+        Array(Array &arr); //Deep copy constructor
         bool isEmpty();
         bool isFull();
         void append(int);
@@ -19,6 +21,7 @@ class Array{
         int getElemetnAtIndex(int index);
         int elementCount();
         int findElementIndex(int data);
+        Array operator=(Array&); //Copy assignment Operator
         ~Array();
 };
 
@@ -30,6 +33,25 @@ Array::Array(int capacity){
     this->lastIndex=-1;
     arrPtr=new int[capacity];
 }
+//copy constructor
+Array::Array(Array& arr){
+    capacity=arr.capacity;
+    lastIndex=arr.lastIndex;
+    arrPtr=new int[capacity];
+    for(int i=0;i<=lastIndex;i++){
+        arrPtr[i]=arr.arrPtr[i];
+    }
+}
+//copy assignment Operator
+ Array Array::operator=(Array& other){
+    delete[] arrPtr;
+    capacity=other.capacity;
+    lastIndex=other.lastIndex;
+    arrPtr=new int[capacity];
+    for(int i=0;i<=lastIndex;i++){
+        arrPtr[i]=other.arrPtr[i];
+    }
+;}
 
 bool Array::isEmpty(){
     return lastIndex==-1;
