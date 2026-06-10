@@ -28,6 +28,7 @@ class Numbers{
         ~Numbers(){
             delete[] arr;
         }
+        // this is the copy consturctor
         Numbers(Numbers& n){
             size=n.size;
             arr=new int[size];
