@@ -1,74 +1,47 @@
-#include"CLL.h"
+/* ----- Circular Linked List*/
+/*
+1. Define a class CLL to implement Circular linked list data structure with member variable last pointer of type node.
+2. In question 1, define a constructor to initialise last pointer with NULL.
+3. In question 1, define a method to insert a data into the list at the beginning.
+4. In question 1, define a method to insert a data into the list at the end.
+5. In question 1, define a method to search a node with the given item.
+6. In question 1, define a method to insert a data into the list after the specified node of the list.
+7. In question 1, define a method to delete first node from the list.
+8. In question 1, define a method to delete last node of the list.
+9. In question 1, define a method to delete a specific node.
+10. In question 1, define a destructor to deallocate memory for all the nodes in the linked list.
+*/
+
+#include<iostream>
 using namespace std;
 
+struct Node
+{
+    int item;
+    Node*next;
+};
 
-void clearScreen() {
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD coord = {0, 0};
-    DWORD count;
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    GetConsoleScreenBufferInfo(hOut, &csbi);
-    FillConsoleOutputCharacter(hOut, ' ', csbi.dwSize.X * csbi.dwSize.Y, coord, &count);
-    SetConsoleCursorPosition(hOut, coord);
-}
+class CLL
+{
+private:
+    Node*Last;
+public:
+    CLL();
+    ~CLL();
 
+    void insertAtbeginning(int );
+    void insertAtend(int );
+    Node*findNode(int );
+    void insertAfterSpecificNode(Node *,int);
+    void deleteFirstNode();
+    void deleteLastNode();
+    void deleteSpecificNode(Node *);
+};
 
-//Node 
-// struct item
-// {
-//     char name[20];
-//     int empId;
-//     int age; 
-//     char mail[25];char contanctNu[12];  
-//     void viewitem();
-//     void getinput();
-// };
-//Item Node Functions Definitions
-void item::viewitem(){
-    cout<<"Employee ID  : "<<empId<<"\n";
-    cout<<"Employee Name: "<<name<<"\n";
-    cout<<"Employee Age : "<<age<<"\n";
-    cout<<"Employee Mail: "<<mail<<"\n";
-    cout<<"Employee Phon: "<<contanctNu<<"\n---------------------------------------------------------------------\n\n";
-}
-void item::getinput(int emp){
-    cout<<"                    ---- Enter the Employee details ----\n";
-    cout<<"Name: ";
-    cin>>name; cout<<"Age: ";
-    cin>>age; cout<<"Mail: ";
-    cin>>mail;cout<<"Contact Nu. ";
-    cin>>contanctNu;
-    empId=emp;
-}
-
-// struct Node
-// {
-//     item data;
-//     Node*next;
-// };
-
-// class CLL
-// {
-// private:
-//     static int totalEmp;
-//     Node*Last;
-// public:
-//     CLL();
-//     ~CLL();
-
-//     void insertAtstart( item );
-//     void insertAtlast(item );
-//     Node*findNode(item );
-//     void insertAfterSpecificNode(Node *,item);
-//     void deleteFirstNode();
-//     void deleteLastNode();
-//     void deleteSpecificNode(Node *);
-// };
-int CLL::totalEmp=0;
-CLL::CLL(/* args */)
+//Q2
+CLL::CLL()
 {
     Last=nullptr;
-    totalEmp=0;
 }
 
 CLL::~CLL()
@@ -78,132 +51,105 @@ CLL::~CLL()
     }
 }
 
-//CLL Functions Definitions
-void CLL::PrintListData(){
-        Node *rnptr=Last->next;
-        do
-        {   rnptr->data.viewitem();
-            rnptr=rnptr->next;
-        } while (rnptr!=Last->next);
-}
-void CLL::insertAtstart( item data ){
-    Node* nod=new Node;
-    nod->data=data;
-    //when list is empty 
+//Q3
+void CLL::insertAtbeginning(int data ){
+    Node* temp=new Node;
+    temp->item=data;
+  //when list is empty 
     if(Last==nullptr){
-        nod->next=nod;
-        Last=nod;
-        totalEmp++;
+        temp->next=temp;
+        Last=temp;
         return;
     }
-    nod->next=Last->next;
-    Last->next=nod;
-    totalEmp++;
-
+  //when list is not Empty   
+    temp->next=Last->next;
+    Last->next=temp;
 }
 
-void CLL::insertAtlast(item data){
-    Node*nod=new Node;
-    nod->data=data;
+//Q4
+void CLL::insertAtend(int data){
+    Node*temp=new Node;
+    temp->item=data;
     if(Last==nullptr){
-        nod->next=nod;
-        Last=nod;
-        totalEmp++;
+        temp->next=temp;
+        Last=temp;
         return;
     }
-    nod->next=Last->next;
-    Last->next=nod;
-    Last=nod;
-    totalEmp++;
-
+    temp->next=Last->next;
+    Last->next=temp;
+    Last=temp;
 }
 
-void CLL::insertAfterSpecificNode(Node * nod,item data){
+//Q5
+Node* CLL::findNode(int item){
+    if(Last == nullptr) return nullptr; 
+
+    Node *runptr=Last->next;
+    while(runptr!=Last){
+        if(runptr->item==item)
+        return runptr;
+        runptr=runptr->next;
+    }
+    if(runptr->item==item)
+        return runptr;
+    return nullptr;
+}
+
+//Q6
+void CLL::insertAfterSpecificNode(Node * nod,int item ){
     if(Last==nullptr){
         cout<<"List is Empty!\n";
         return;
     }
     if(nod==Last){
-        insertAtlast(data);
+        insertAtend(item);
     }
     else{
         Node*temp=new Node;
-        temp->data=data;
+        temp->item=item;
         temp->next=nod->next;
         nod->next=temp;
-        totalEmp++;
     }
-
 }
 
-void CLL::listTraverse(){
-    
-    if(Last==nullptr){
-        cout<<"[null]<---(LAST)\n";         
-        return ;
-    }
-    else{
-        Node *rnptr=Last->next;
-        do
-        {   cout<<"["<<rnptr->data.empId<<"]-->";
-            rnptr=rnptr->next;
-        } while (rnptr!=Last->next);
-        cout<<"["<<Last->next->data.empId<<"] (LAST)";
-    }
-    return ;
-}
-
-Node* CLL::findNode(int empId){
-    if(Last == nullptr) return nullptr; 
-    Node *runptr=Last->next;
-    while(runptr!=Last){
-        if(runptr->data.empId==empId)
-        return runptr;
-        runptr=runptr->next;
-    }
-    if(runptr->data.empId==empId)
-    return runptr;
-    return nullptr;
-}
-
+//Q7
 void CLL::deleteFirstNode(){
     if(Last == nullptr) return; 
 
     if(Last->next == Last){     
         delete Last;
         Last = nullptr;
-        totalEmp--;
         return;
     }
 
     Node* Dnod=Last->next;
     Last->next=Dnod->next;
     delete Dnod;
-    totalEmp--;
-
 }
 
+//Q8
 void CLL::deleteLastNode(){
     if(Last == nullptr) return; 
 
     if(Last->next == Last){     
         delete Last;
         Last = nullptr;  
-        totalEmp--;
         return;
     }
-    Node*Dnod=Last->next;
-    while(Dnod->next!=Last){
-        Dnod=Dnod->next;
+    Node*temp=Last->next;
+    while(temp->next!=Last){
+        temp=temp->next;
     }
-    Last=Dnod;
-    delete Dnod->next;
-    totalEmp--;
-
+    temp->next=Last->next;
+    delete Last;
+    Last=temp;
 }
+
+//Q9
 void CLL::deleteSpecificNode(Node *nod){
     if(nod==Last){
         delete Last;
+        Last=nullptr;
     }
     else{
         Node*temp=Last;
@@ -212,9 +158,7 @@ void CLL::deleteSpecificNode(Node *nod){
         }
         temp->next=nod->next;
         delete nod;
-        totalEmp--;
     }
-
 }
 
 
