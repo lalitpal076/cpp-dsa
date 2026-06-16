@@ -1,3 +1,4 @@
+/*  ----- Stack Using Array -----*/
 /*
 1. Define a class Stack with capacity, top and ptr pointer as member variables. Implement stack using array.
 2. In question 1, define a parameterized constructor to initialise member variables.
@@ -78,6 +79,34 @@ int Stack::minValueInStack(){
             min=ptr[i];
     }
     return min;
+}
+
+// keep track of minimum value in stack anoterh variant usin stack
+class KeepMinValueStack{
+    private:
+        Stack s;
+        Stack minS;
+    public:
+        void push(int);
+        int peek();
+        int pop();
+        int minValue();
+};
+
+
+void KeepMinValueStack::push(int data){
+    s.push(data);
+    minS.push(data);
+}
+int  KeepMinValueStack::peek(){
+    return s.peek();
+}
+int  KeepMinValueStack::pop(){
+    minS.pop();
+    return s.pop();
+}
+int  KeepMinValueStack::minValue(){
+    return minS.peek();
 }
 
 int main() {
