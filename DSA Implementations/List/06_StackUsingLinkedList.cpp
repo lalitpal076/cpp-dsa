@@ -10,13 +10,13 @@
 7. Define a method to reverse a stack.
 8. Define a method to check whether a given number is a palindrome or not using stack.
 9. Define a method to convert infix to postfix expression.
-10. Define a method to evaluate postfix expression.
-
 */
 
 
 #include<iostream>
+#include<string>
 #define STACK_UNDERFLOW -1
+
 using namespace std;
 class Node{
     private:
@@ -127,15 +127,114 @@ bool isPalindrome(int number){
         return true;
     else
         return false;
-
 }
 
-void infixToPostFix(){
+//create a Array stl class 
+template <typename T>
+class Array{
+    private:
+        int cap;
+        T *arr;
+    protected:
+        void doubelArray(){
+            if(filledIndex==cap-1){
+                cap*=2;
+                T *temp=new T[cap];
+                for(int i=0;i<=filledIndex;i++)
+                    temp[i]=arr[i];
+                delete[] arr;
+                arr=temp;
+            }}
+        void halfArray(){
+            if(filledIndex==cap/2-1){
+                cap/=2;
+                T *temp=new T[cap];
+                for(int i=0;i<=filledIndex;i++)
+                    temp[i]=arr[i];
+                delete[] arr;
+                arr=temp;
+            }
+        }
+    public:
+        int length;
+        int filledIndex=-1;
+        Array(){this->cap=20; length=cap-1; arr=new T[cap];}
+        ~Array(){delete[] arr;}
+        void push(T data){ doubelArray();if(filledIndex < length)arr[++filledIndex]=data;}
+        T pop(){if(filledIndex>=0)return arr[filledIndex--]; else throw    STACK_UNDERFLOW;}
+        T getValue(int index){return arr[index];}
+        T top(){return arr[filledIndex];}
+        void insertValue(int index, T value){arr[index]= value;}
+};
 
+int precedence(char op){
+    switch (op)
+    {
+    case '+':
+        return 1;
+        break;
+    
+    case '-':
+        return 1;
+        break;
+    case '*':
+        return 2;
+        break;
+    case '/':
+        return 2;
+        break;
+    default:
+        return 0;
+        break;
+    }
+}
+// "A+B*C"
+bool isOperator(char ch){
+    string expr="+-*/()";
+    return (expr.find(ch)!=string::npos?1:0);
+}
+void infixToPostFix(string expression){
+    int length=expression.length();
+    Array<char> postFix;
+    Array<char> stack;
+
+    for(int i=0;i<length;i++){
+        if(expression[i]=='(') // handle open parenthesis
+            stack.push(expression[i]);
+
+        else if(!isOperator(expression[i]))// handle numbers
+            postFix.push(expression[i]);
+
+        else if(isOperator(expression[i]) && expression[i]!=')'){
+            if(stack.filledIndex==-1){
+                stack.push(expression[i]);
+            }
+            else{
+                while(precedence(stack.top())>=precedence(expression[i]) ){
+                    postFix.push(stack.pop());
+                }
+                if(precedence(stack.top())<precedence(expression[i]) )
+                    stack.push(expression[i]);
+            }
+        }
+        else if(expression[i]==')' && stack.filledIndex!=-1){
+            while(stack.top()!='('){
+                postFix.push(stack.pop());
+            }
+            stack.pop();
+        }  
+    }  
+    while(stack.filledIndex!=-1){
+        postFix.push(stack.pop());
+    }
+
+    for(int i=0;i<=postFix.filledIndex;i++){
+        cout<<postFix.getValue(i)<<" ";
+    }
 }
 
 int main()
 {
-    cout<<boolalpha<<isPalindrome(124321);
+    infixToPostFix("(A+/D-B*C)");
     return 0;
 }
