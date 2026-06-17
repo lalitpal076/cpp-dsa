@@ -17,8 +17,8 @@ Following a structured course — covering basics, DSA implementations, and STL.
 
 ### DSA Implementations
 - [x] Arrays
-- [ ] Linked List
-- [ ] Stack
+- [x] Linked List
+- [x] Stack
 - [ ] Queue
 - [ ] Trees
 - [ ] Graphs
