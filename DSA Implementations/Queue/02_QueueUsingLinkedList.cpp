@@ -42,7 +42,7 @@ class Queue{
 };
 Queue::Queue(){
     front=nullptr;
-    rear=nullptr
+    rear=nullptr;
 }
 
 void Queue::enqueue(int data){
