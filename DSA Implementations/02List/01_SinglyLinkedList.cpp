@@ -31,6 +31,16 @@ class SLL{
 SLL::SLL(){
     start=nullptr;
 }
+
+SLL::~SLL(){
+    while (start!=nullptr)
+    {
+        Node *hold=start->getNext();
+        delete start;
+        start=hold;
+    }
+}
+
 void SLL::insertDataAtFirst(int data){
     Node *node=new Node;
     node->setData(data);
