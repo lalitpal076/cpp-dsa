@@ -50,8 +50,7 @@ public:
     }
 };
 
-class BST
-{
+class BST{
 private:
     Node *root;
     void preorderTraversal(Node *root);    
@@ -96,6 +95,7 @@ bool BST::search(Node* ptr, int value) {
 
     return (left || right);
 }
+
 // Search Wrapper function
 bool BST::search(int value){
     return search(root,value);
@@ -258,10 +258,6 @@ int main() {
     tree.inorder();
     cout << "\nPostorder Traversal: ";
     tree.postorder();
-
-    // Sahi tarika: root ko access karne ke liye tumhe traversal functions ko class ke andar hi root se call karna hoga.
-    // Abhi tumhare traversal functions Node* parameter lete hain, isliye driver me root pointer directly accessible nahi hai.
-    // Isko solve karne ke liye tum BST class me ek public wrapper bana sakte ho jo root ko pass kare.
 
     return 0;
 }
