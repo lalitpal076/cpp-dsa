@@ -20,8 +20,8 @@ Following a structured course — covering basics, DSA implementations, and STL.
 - [x] Linked List
 - [x] Stack
 - [x] Queue
-- [ ] Trees
-- [ ] Graphs
+- [x] Trees
+- [x] Graphs
 
 ### STL
 - [x] STL TemplateAssignment
