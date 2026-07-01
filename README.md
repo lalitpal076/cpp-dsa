@@ -25,7 +25,9 @@ Following a structured course — covering basics, DSA implementations, and STL.
 
 ### STL
 - [x] STL TemplateAssignment
-- [ ] Vectors
+- [x] Array
+- [x] Vectors
+- [x] List
 - [ ] Maps, Sets
 - [ ] Algorithms
 
@@ -38,8 +40,16 @@ cpp-dsa/
 ├── DSA/
 │   ├── Arrays/
 │   ├── LinkedList/
-│   └── ...
+│   ├── Stack/
+│   ├── Queue/
+│   ├── Tree/
+│   └── Graph/
 └── STL/
+    ├── STL Templates/
+    ├── Arrays/
+    ├── Vectors/
+    └── List/
+    
 ```
 
 ## Language & Tools
