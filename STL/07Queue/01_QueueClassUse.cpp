@@ -115,6 +115,30 @@ bool PriorityQueue::isEmpty(){
     return true;
 }
 
+//Q3
+void f3(int k, queue<int>&q){
+    queue<int> temp;
+    stack<int> s;
+    int i=1;
+    while (1<=k &&(!q.empty()))
+    {
+        s.push(q.front());
+        q.pop();
+        i++;
+    }
+    while (!q.empty())
+    {
+        if(i>=1){
+            temp.push(s.top());
+            s.pop();
+            i--;
+        }else{
+            temp.push(q.front());
+            q.pop();
+        }
+    }
+    q=temp;
+}
 
  
 
