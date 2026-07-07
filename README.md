@@ -28,6 +28,9 @@ Following a structured course — covering basics, DSA implementations, and STL.
 - [x] Array
 - [x] Vectors
 - [x] List
+- [x] Deque
+- [x] Stack
+- [x] Queue
 - [ ] Maps, Sets
 - [ ] Algorithms
 
