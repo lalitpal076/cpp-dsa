@@ -51,7 +51,10 @@ cpp-dsa/
     ├── STL Templates/
     ├── Arrays/
     ├── Vectors/
-    └── List/
+    ├── List/
+    ├── Deque/
+    ├── Stack/
+    └── Queue/
     
 ```
 
