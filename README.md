@@ -31,7 +31,7 @@ Following a structured course — covering basics, DSA implementations, and STL.
 - [x] Deque
 - [x] Stack
 - [x] Queue
-- [ ] Maps, Sets
+- [x] Maps, Sets
 - [ ] Algorithms
 
 ## Structure
